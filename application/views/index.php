@@ -8,11 +8,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 <head>
 <title>Trip a Travel Agency Flat Bootstarp Responsive Web Template| Home :: w3layouts</title>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="<?php echo base_url(); ?>assets/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
 <!-- Custom Theme files -->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,15 +23,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway:400,800,300,100,500,700,600,900' rel='stylesheet' type='text/css'>
 <!--animated-css-->
-<link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
-<script src="js/wow.min.js"></script>
+<link href="<?php echo base_url(); ?>assets/css/animate.css" rel="stylesheet" type="text/css" media="all">
+<script src="<?php echo base_url(); ?>assets/js/wow.min.js"></script>
 <script>
  new WOW().init();
 </script>
 <!--/animated-css-->
 <!--script-->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/move-top.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/easing.js"></script>
 <!--/script-->
 <script type="text/javascript">
 			jQuery(document).ready(function($) {
@@ -41,8 +41,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				});
 			});
 </script>
-	<link rel="stylesheet" href="css/swipebox.css">
-	<script src="js/jquery.swipebox.min.js"></script> 
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/swipebox.css">
+	<script src="<?php echo base_url(); ?>assets/js/jquery.swipebox.min.js"></script>
 	    <script type="text/javascript">
 			jQuery(function($) {
 				$(".swipebox").swipebox();
@@ -55,8 +55,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	 <div class="container">
 		 <div class="header">	 
 			 <div class="logo wow fadeInLeft" data-wow-delay="0.5s">
-			 <a href="index.html"><img src="images/logo2.png" alt=""/></a>
-			 </div>	
+			    <a href="index.html"><img src="<?php echo base_url(); ?>assets/images/logo2.png" alt=""/></a>
+                 <a href="index.html"><img src="<?php echo base_url(); ?>assets/images/logo2.png" alt=""/></a>
+             </div>
 			 <div class="top-menu">
 				 <span class="menu"> </span> 
 				 <ul>
@@ -88,7 +89,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	 <div class="container">
 	 	<h4>BRIEF</h4>
 		 <div class="col-md-6 brief-grids wow fadeInLeft" data-wow-delay="0.5s">
-			 <img src="images/browse.jpg" alt=""/>
+			 <img src="<?php echo base_url(); ?>assets/images/browse.jpg" alt=""/>
 			 <div class="brief-grid">
 				 <div class="brief-grid-text">
 					 <h3>Trip the awesomeness</h3>
@@ -108,7 +109,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 </div>
 		 </div>
 		 <div class="col-md-6 brief-grids wow fadeInRight" data-wow-delay="0.5s">
-			 <img src="images/browse2.jpg" alt=""/>
+			 <img src="<?php echo base_url(); ?>assets/images/browse2.jpg" alt=""/>
 			 <div class="brief-grid">
 				 <div class="brief-grid-text">
 					 <h3>Describe more about Trip</h3>
@@ -231,8 +232,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 <div class="clearfix"> </div>
 		 </div>
 		 <!--pop-up-grid-->
-		 <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
-		<script type="text/javascript" src="js/modernizr.custom.53451.js"></script> 
+		 <script src="<?php echo base_url(); ?>assets/js/jquery.magnific-popup.js" type="text/javascript"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/modernizr.custom.53451.js"></script>
 
  <script>
 						$(document).ready(function() {
@@ -333,8 +334,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 		 </div>
 		 <!-- requried-jsfiles-for owl -->
-				<link href="css/owl.carousel.css" rel="stylesheet">
-							    <script src="js/owl.carousel.js"></script>
+				<link href="<?php echo base_url(); ?>assets/css/owl.carousel.css" rel="stylesheet">
+							    <script src="<?php echo base_url(); ?>assets/js/owl.carousel.js"></script>
 							        <script>
 							    $(document).ready(function() {
 							      $("#owl-demo").owlCarousel({
@@ -352,60 +353,60 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			  <div class="item text-center guide-sliders">
 				 <div class="col-md-4 image-grid">
 				 	<div class="portfolio-wrapper">		
-						<a href="images/sc1.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
-							<img src="images/sc1.JPG"></a>
+						<a href="<?php echo base_url(); ?>assets/images/sc1.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
+							<img src="<?php echo base_url(); ?>assets/images/sc1.JPG"></a>
 			         </div>			 
 				 </div>
 				 <div class="col-md-4 image-grid">
 				 	<div class="portfolio-wrapper">	
-				 		<a href="images/sc2.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
-						 <img src="images/sc2.JPG"></a>		
+				 		<a href="<?php echo base_url(); ?>assets/images/sc2.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
+						 <img src="<?php echo base_url(); ?>assets/images/sc2.JPG"></a>
 					 </div>			 
 				 </div>
 				 <div class="col-md-4 image-grid">
 					 <div class="portfolio-wrapper">	
-				 		<a href="images/sc3.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
-						 <img src="images/sc3.JPG"></a>		
+				 		<a href="<?php echo base_url(); ?>assets/images/sc3.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
+						 <img src="<?php echo base_url(); ?>assets/images/sc3.JPG"></a>
 					 </div>					 
 				 </div>				   
 			  </div>			  
 			  <div class="item text-center guide-sliders">
 				 <div class="col-md-4 image-grid">
 						<div class="portfolio-wrapper">	
-				 		<a href="images/sc4.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
-						 <img src="images/sc4.JPG"></a>		
+				 		<a href="<?php echo base_url(); ?>assets/images/sc4.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
+						 <img src="<?php echo base_url(); ?>assets/images/sc4.JPG"></a>
 					 </div>					 
 				 </div>
 				 <div class="col-md-4 image-grid">
 					 <div class="portfolio-wrapper">	
-				 		<a href="images/sc5.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
-						 <img src="images/sc5.JPG"></a>		
+				 		<a href="<?php echo base_url(); ?>assets/images/sc5.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
+						 <img src="<?php echo base_url(); ?>assets/images/sc5.JPG"></a>
 					 </div>					 
 				 </div>
 				 <div class="col-md-4 image-grid">
 					 <div class="portfolio-wrapper">	
-				 		<a href="images/sc1.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
-						 <img src="images/sc1.JPG"></a>		
+				 		<a href="<?php echo base_url(); ?>assets/images/sc1.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
+						 <img src="<?php echo base_url(); ?>assets/images/sc1.JPG"></a>
 					 </div>					 
 				 </div>						
 			  </div>
 			  <div class="item text-center guide-sliders">
 				 <div class="col-md-4 image-grid">
 					 <div class="portfolio-wrapper">	
-				 		<a href="images/sc5.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
-						 <img src="images/sc5.JPG"></a>		
+				 		<a href="<?php echo base_url(); ?>assets/images/sc5.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
+						 <img src="<?php echo base_url(); ?>assets/images/sc5.JPG"></a>
 					 </div>					 
 				 </div>
 				 <div class="col-md-4 image-grid">
 					 <div class="portfolio-wrapper">	
-				 		<a href="images/sc4.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
-						 <img src="images/sc4.JPG"></a>		
+				 		<a href="<?php echo base_url(); ?>assets/images/sc4.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
+						 <img src="<?php echo base_url(); ?>assets/images/sc4.JPG"></a>
 					 </div>					 
 				 </div>
 				 <div class="col-md-4 image-grid">
 					<div class="portfolio-wrapper">	
-				 		<a href="images/sc2.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
-						 <img src="images/sc2.JPG"></a>		
+				 		<a href="<?php echo base_url(); ?>assets/images/sc2.JPG" class="b-link-stripe b-animate-go   swipebox"  title="Image Title">
+						 <img src="<?php echo base_url(); ?>assets/images/sc2.JPG"></a>
 					 </div>					 
 				 </div>						
 			  </div>
@@ -424,42 +425,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 <ul id="flexiselDemo1">
 				<li>
 					<div class="biseller-column">
-					<a href="single.html"><img src="images/sld1.png" alt=""></a>
+					<a href="single.html"><img src="<?php echo base_url(); ?>assets/images/sld1.png" alt=""></a>
 					</div>
 				</li>
 				<li>
 					<div class="biseller-column">
-					<a href="single.html"><img src="images/sld2.png" alt=""></a>
+					<a href="single.html"><img src="<?php echo base_url(); ?>assets/images/sld2.png" alt=""></a>
 					</div>
 				</li>
 				<li>
 					<div class="biseller-column">
-					<a href="single.html"><img src="images/sld3.png" alt=""></a>
+					<a href="single.html"><img src="<?php echo base_url(); ?>assets/images/sld3.png" alt=""></a>
 					</div>
 				</li>
 				<li>
 					<div class="biseller-column">
-					<a href="single.html"><img src="images/sld4.png" alt=""></a>
+					<a href="single.html"><img src="<?php echo base_url(); ?>assets/images/sld4.png" alt=""></a>
 					</div>
 				</li>
 				<li>
 					<div class="biseller-column">
-					<a href="single.html"><img src="images/sld1.png" alt=""></a>
+					<a href="single.html"><img src="<?php echo base_url(); ?>assets/images/sld1.png" alt=""></a>
 					</div>
 				</li>
 				<li>
 					<div class="biseller-column">
-					<a href="single.html"><img src="images/sld3.png" alt=""></a>
+					<a href="single.html"><img src="<?php echo base_url(); ?>assets/images/sld3.png" alt=""></a>
 					</div>
 				</li>
 				<li>
 					<div class="biseller-column">
-					<a href="single.html"><img src="images/sld4.png" alt=""></a>
+					<a href="single.html"><img src="<?php echo base_url(); ?>assets/images/sld4.png" alt=""></a>
 					</div>
 				</li>
 				<li>
 					<div class="biseller-column">
-					<a href="single.html"><img src="images/sld2.png" alt=""></a>
+					<a href="single.html"><img src="<?php echo base_url(); ?>assets/images/sld2.png" alt=""></a>
 					</div>
 				</li>
 			 </ul>
@@ -490,7 +491,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				
 			 });
 			   </script>
-			   <script type="text/javascript" src="js/jquery.flexisel.js"></script>	
+			   <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.flexisel.js"></script>
 	     </div>
 		  <div class="box-grids">
 				 <div class="col-md-4 client wow fadeInLeft" data-wow-delay="0.5s">
@@ -567,7 +568,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="footer">
 	 <div class="container">
 		 <div class="ftr-logo">
-			 <a class="wow bounceIn" data-wow-delay="0.5s" href="index.html"><img src="images/logo2.png" alt=""/></a>
+			 <a class="wow bounceIn" data-wow-delay="0.5s" href="index.html"><img src="<?php echo base_url(); ?>assets/images/logo2.png" alt=""/></a>
 		 </div>
 		 <div class="copy-right wow bounceInUp" data-wow-delay="0.5s">
 			 <p>Copyright &#169; 2015 Trip . All Rights Reserved.</p>
