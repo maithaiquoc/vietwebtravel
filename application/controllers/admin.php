@@ -14,12 +14,14 @@ class Admin extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('admin/index');
+        $data['title'] = "Trang Quản Trị | Bảng điều khiển";
+        $this->load->view('admin/index', $data);
     }
 
     public function login()
     {
-        $this->load->view('admin/login');
+        $data['title'] = "Trang Quản Trị | Đăng nhập";
+        $this->load->view('admin/login', $data);
     }
 
 }
