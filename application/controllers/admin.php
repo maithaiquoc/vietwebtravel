@@ -9,8 +9,12 @@ class Admin extends CI_Controller {
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('session');
-        $this->load->model('users_model');
         $this->load->library("pagination");
+    }
+
+    public function index()
+    {
+        $this->load->view('admin/index');
     }
 
     public function dashboard()
