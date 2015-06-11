@@ -13,8 +13,6 @@
 <script src="<?php echo base_url(); ?>plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
 <!-- datepicker -->
 <script src="<?php echo base_url(); ?>plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
-<!-- iCheck -->
-<script src="<?php echo base_url(); ?>plugins/iCheck/icheck.min.js" type="text/javascript"></script>
 <!-- SlimScroll 1.3.0 -->
 <script src="<?php echo base_url(); ?>plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 <!-- ChartJS 1.0.1 -->
