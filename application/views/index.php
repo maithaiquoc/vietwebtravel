@@ -10,7 +10,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <title>Trip a Travel Agency Flat Bootstarp Responsive Web Template| Home :: w3layouts</title>
 <link href="<?php echo base_url(); ?>assets/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (Bootstrap's JavaScript plugins) -->
-<script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.3.min.js"></script>
 <!-- Custom Theme files -->
 <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- Custom Theme files -->
@@ -56,7 +56,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 <div class="header">	 
 			 <div class="logo wow fadeInLeft" data-wow-delay="0.5s">
 			    <a href="index.html"><img src="<?php echo base_url(); ?>assets/images/logo2.png" alt=""/></a>
-                 <a href="index.html"><img src="<?php echo base_url(); ?>assets/images/logo2.png" alt=""/></a>
              </div>
 			 <div class="top-menu">
 				 <span class="menu"> </span> 
