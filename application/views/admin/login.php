@@ -6,7 +6,7 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Đăng nhập để bắt đầu việc quản lý của bạn</p>
-        <form action="../../index2.html" method="post">
+        <form action="<?php echo base_url(); ?>admin" method="post">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Email"/>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -40,5 +40,17 @@
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
-
     <?php include("foot.php"); ?>
+    <!-- Jquery 1.11.1 JS -->
+    <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.1.js" type="text/javascript"></script>
+    <!-- iCheck -->
+    <script src="<?php echo base_url(); ?>plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        });
+    </script>
