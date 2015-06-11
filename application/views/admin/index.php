@@ -1071,6 +1071,7 @@
 
 </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
+</div><!-- ./wrapper -->
 <?php include("footer.php"); ?>
 <?php include("foot.php"); ?>
 
