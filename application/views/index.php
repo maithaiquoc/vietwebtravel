@@ -1,61 +1,11 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE html>
-<html>
-<head>
-<title>Trip a Travel Agency Flat Bootstarp Responsive Web Template| Home :: w3layouts</title>
-<link href="<?php echo base_url(); ?>assets/css/bootstrap.css" rel='stylesheet' type='text/css' />
-<!-- jQuery (Bootstrap's JavaScript plugins) -->
-<script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.3.min.js"></script>
-<!-- Custom Theme files -->
-<link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- Custom Theme files -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Trip  Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!--webfont-->
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,800,300,100,500,700,600,900' rel='stylesheet' type='text/css'>
-<!--animated-css-->
-<link href="<?php echo base_url(); ?>assets/css/animate.css" rel="stylesheet" type="text/css" media="all">
-<script src="<?php echo base_url(); ?>assets/js/wow.min.js"></script>
-<script>
- new WOW().init();
-</script>
-<!--/animated-css-->
-<!--script-->
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/move-top.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/easing.js"></script>
-<!--/script-->
-<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
-				});
-			});
-</script>
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/swipebox.css">
-	<script src="<?php echo base_url(); ?>assets/js/jquery.swipebox.min.js"></script>
-	    <script type="text/javascript">
-			jQuery(function($) {
-				$(".swipebox").swipebox();
-			});
-		</script>
-</head>
+<?php include("head.php"); ?>
 <body>
 <!---->
 <div class="banner">
 	 <div class="container">
 		 <div class="header">	 
 			 <div class="logo wow fadeInLeft" data-wow-delay="0.5s">
-			    <a href="index.html"><img src="<?php echo base_url(); ?>assets/images/logo2.png" alt=""/></a>
+			    <a href="index.html"><img src="<?php echo base_url(); ?>assets/images/logo.png" alt=""/></a>
              </div>
 			 <div class="top-menu">
 				 <span class="menu"> </span> 
@@ -564,33 +514,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!--/map-->
 <!---->
-<div class="footer">
-	 <div class="container">
-		 <div class="ftr-logo">
-			 <a class="wow bounceIn" data-wow-delay="0.5s" href="index.html"><img src="<?php echo base_url(); ?>assets/images/logo2.png" alt=""/></a>
-		 </div>
-		 <div class="copy-right wow bounceInUp" data-wow-delay="0.5s">
-			 <p>Copyright &#169; 2015 Trip . All Rights Reserved.</p>
-			 <p>Design by <a href="http://w3layouts.com/"> W3layouts</a></p>
-		 </div>
-
-	 </div>
-</div>
+<?php include("footer.php"); ?>
 <!---->
-<script type="text/javascript">
-		$(document).ready(function() {
-				/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-				};
-				*/
-		$().UItoTop({ easingType: 'easeOutQuart' });
-});
-</script>
-<a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-<!----> 
- </body>
- </html>
+<?php include("foot.php"); ?>
