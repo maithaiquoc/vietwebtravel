@@ -19,10 +19,23 @@ class Admin extends CI_Controller {
         $this->load->view('admin/index', $data);
     }
 
+    public function dashboard()
+    {
+        $this->session->set_userdata('linkAdmin', base_url().'admin/dashboard');
+        $data['title'] = "Trang Quản Trị | Bảng điều khiển";
+        $this->load->view('admin/index', $data);
+    }
+
+    public function slider()
+    {
+        $this->session->set_userdata('linkAdmin', base_url().'admin/slider');
+        $data['title'] = "Trang Quản Trị | Slider";
+        $this->load->view('admin/slider', $data);
+    }
+
     public function login()
     {
         $data['title'] = "Trang Quản Trị | Đăng nhập";
         $this->load->view('admin/login', $data);
     }
-
 }
