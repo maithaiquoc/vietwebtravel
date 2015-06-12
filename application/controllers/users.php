@@ -27,7 +27,7 @@ class Users extends CI_Controller {
 
     public function checkLogin()
     {
-        echo $email = $this->input->post('email');
+        $email = $this->input->post('email');
         $password = md5($this->input->post('password'));
         $remember = $this->input->post('remember');
 
@@ -94,5 +94,45 @@ class Users extends CI_Controller {
             'user_data' => $user_data
         );
         $this->crud_model->insert('ci_sessions', $data);
+    }
+
+    public function login()
+    {
+        $ip = $this->session->userdata('ip_address');
+        $check = $this->users_model->getSessionTable($ip);
+        $isLogin = $this->session->userdata('email');
+        if($check != 0){
+            $field= "user_data";
+            $email = $this->users_model->getEmailSessionTable($field, $ip);
+            $this->session->set_userdata('email', $email);
+            $field2 = 'admin';
+            $admin = $this->users_model->getInfoUser($field2, $email);
+            $this->session->set_userdata('isAdmin', $admin);
+            $this->session->set_userdata('new_expiration',1209600); //2 weeks
+            $this->session->sess_update(); //force the session to update the cookie and/or database
+            header("location:javascript://history.go(-1)");
+        }
+        else if($isLogin != ''){
+            $email = $isLogin;
+            $this->session->set_userdata('email', $email);
+            $field2 = 'admin';
+            $admin = $this->users_model->getInfoUser($field2, $email);
+            $this->session->set_userdata('isAdmin', $admin);
+            header("location:javascript://history.go(-1)");
+        }
+        else{
+            $this->load->view('admin/login');
+        }
+    }
+
+    public function logOut()
+    {
+        $ip = $this->session->userdata('ip_address');
+        $check = $this->users_model->getSessionTable($ip);
+        if($check != ''){
+            $this->crud_model->delete('ip_address', $ip, 'ci_sessions');
+        }
+        $this->session->sess_destroy();
+        redirect(base_url());
     }
 }
