@@ -10,13 +10,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Blank page
-                <small>it all starts here</small>
+                Quản lý slider
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Examples</a></li>
-                <li class="active">Blank page</li>
+                <li><a href="<?php echo base_url(); ?>admin"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+                <li class="active">Slider</li>
             </ol>
         </section>
 
@@ -26,18 +24,19 @@
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Title</h3>
+                    <h3 class="box-title">Bảng thông tin dữ liệu</h3>
                     <div class="box-tools pull-right">
                         <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                         <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
                     </div>
                 </div>
                 <div class="box-body">
-                    Start creating your amazing application!
+                    <div class="row divRight">
+                        <button class="btn btn-primary pull-right" onclick="emptySessionAdminAdsCreate(); lightbox_open('lightCreateAdminAds', 'fadeCreateAdminAds');"><span class="glyphicon glyphicon-plus"></span> Thêm Mới</button>
+                    </div>
+                    <div class="table-responsive" id="divTableAdsManager"></div>
                 </div><!-- /.box-body -->
-                <div class="box-footer">
-                    Footer
-                </div><!-- /.box-footer-->
+                <div class="box-footer" id="pageAdminAds"></div><!-- /.box-footer-->
             </div><!-- /.box -->
 
         </section><!-- /.content -->
@@ -192,18 +191,6 @@
 </script>
 
 <script>
-    function prev(){
-        var page = ($('#list li.active').index()-1); <!-- lay index cua li dang gan lop active -->
-        $('#'+page).click();
-    }
-
-    function next(){
-        var page = ($('#list li.active').index()+1);
-        $('#'+page).click();
-    }
-</script>
-
-<script>
     function getPage(){
         var url = "<?php echo base_url() ?>";
         $.ajax({
@@ -226,90 +213,7 @@
     }
 </script>
 
-<script language="JavaScript" type="text/javascript">
-    function lightbox_open(idLight, idFade){
-        window.scrollTo(0,0);
-        document.getElementById(idLight).style.display='block';
-        document.getElementById(idFade).style.display='block';
-    }
-
-    function lightbox_close(idLight, idFade){
-        document.getElementById(idLight).style.display='none';
-        document.getElementById(idFade).style.display='none';
-    }
-</script>
-
-<script language="Javascript">
-    function fileUpload(form, action_url, div_id, div_upload, div_preview) {
-        // Create the iframe...
-        var iframe = document.createElement("iframe");
-        iframe.setAttribute("id", "upload_iframe");
-        iframe.setAttribute("name", "upload_iframe");
-        iframe.setAttribute("width", "0");
-        iframe.setAttribute("height", "0");
-        iframe.setAttribute("border", "0");
-        iframe.setAttribute("style", "width: 0; height: 0; border: none;");
-
-        // Add to document...
-        form.parentNode.appendChild(iframe);
-        window.frames['upload_iframe'].name = "upload_iframe";
-
-        iframeId = document.getElementById("upload_iframe");
-
-        // Add event...
-        var eventHandler = function () {
-
-            if (iframeId.detachEvent) iframeId.detachEvent("onload", eventHandler);
-            else iframeId.removeEventListener("load", eventHandler, false);
-
-            // Message from server...
-            if (iframeId.contentDocument) {
-                content = iframeId.contentDocument.body.innerHTML;
-            } else if (iframeId.contentWindow) {
-                content = iframeId.contentWindow.document.body.innerHTML;
-            } else if (iframeId.document) {
-                content = iframeId.document.body.innerHTML;
-            }
-
-            if(content != "<p>You did not select a file to upload.</p>"){
-                var num = content.split(/[^ \t\r\n]/)[0].length; //dem so khoang trang
-//                alert(num);
-                if(num == 0){
-                    var idDiv2 = $('#'+div_upload+'').val();
-//                    alert(idDiv2);
-                    var divID2 = document.getElementById(idDiv2);
-                    divID2.style.backgroundSize = "70px 60px";
-                    divID2.style.backgroundImage = "url('<?php echo base_url() ?>uploads/"+content+"')";
-                    $('#'+div_preview+'').attr('src', '<?php echo base_url() ?>uploads/'+content+'');
-                }
-            }
-
-//            alert(content);
-            document.getElementById(div_id).innerHTML = content;
-
-            // Del the iframe...
-            setTimeout('iframeId.parentNode.removeChild(iframeId)', 250);
-        }
-
-        if (iframeId.addEventListener) iframeId.addEventListener("load", eventHandler, true);
-        if (iframeId.attachEvent) iframeId.attachEvent("onload", eventHandler);
-
-        // Set properties of form...
-        form.setAttribute("target", "upload_iframe");
-        form.setAttribute("action", action_url);
-        form.setAttribute("method", "post");
-        form.setAttribute("enctype", "multipart/form-data");
-        form.setAttribute("encoding", "multipart/form-data");
-
-        // Submit the form...
-        form.submit();
-
-        document.getElementById(div_id).innerHTML = "Đang tải tập tin...";
-    }
-</script>
-
 <script>
     //    $w.a('txtAdminAdsContent');
     CKEDITOR.replace( 'txtAdminAdsContent' );
-
 </script>

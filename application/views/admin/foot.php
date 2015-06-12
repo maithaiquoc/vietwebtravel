@@ -25,5 +25,7 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>assets/js/theme.js" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/admin.js"></script>
 </body>
 </html>
