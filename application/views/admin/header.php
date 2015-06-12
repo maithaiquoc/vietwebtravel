@@ -1,3 +1,8 @@
+<?php
+if($this->session->userdata('email') == ''){
+    header('Location: '.base_url()."login");
+}
+?>
 <header class="main-header">
 <!-- Logo -->
 <a href="index2.html" class="logo"><b>Admin</b>LTE</a>
@@ -231,7 +236,7 @@
                 <a href="#" class="btn btn-default btn-flat">Profile</a>
             </div>
             <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                <a href="<?php echo base_url(); ?>logout" class="btn btn-default btn-flat">Sign out</a>
             </div>
         </li>
     </ul>
