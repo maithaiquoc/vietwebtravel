@@ -86,7 +86,7 @@
                 </div>
                 <div class="col-md-6" id="divNewSlider">
                     <div class="row">
-                        <span> Tải hình ảnh <span style="color: red"> *</span></span>
+                        <span> Tải hình ảnh <span style="color: red"> *</span> (Kích thước chuẩn: 2000x1125</span>
                     </div>
                     <div class="row">
                         <img class="imgPreviewAdmin" id="imgPreviewAdminSlider" src="<?php echo base_url() ?>assets/images/no-image.png"/>
