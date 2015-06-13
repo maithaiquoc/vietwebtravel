@@ -23,6 +23,7 @@ class Admin extends CI_Controller {
     {
         $this->session->set_userdata('linkAdmin', base_url().'admin/dashboard');
         $data['title'] = "Trang Quản Trị | Bảng điều khiển";
+        $data['type'] = 1;
         $this->load->view('admin/index', $data);
     }
 
@@ -30,6 +31,7 @@ class Admin extends CI_Controller {
     {
         $this->session->set_userdata('linkAdmin', base_url().'admin/slider');
         $data['title'] = "Trang Quản Trị | Slider";
+        $data['type'] = 2;
         $this->load->view('admin/slider', $data);
     }
 
