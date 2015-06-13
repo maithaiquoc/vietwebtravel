@@ -46,83 +46,69 @@
 <?php include("foot.php"); ?>
 
 <!-- input Create Control Panel -->
-<div class="light row" id="lightCreateAdminAds" style="width: 80%; height: inherit; left: 19%; top: 11%;">
+<div class="light row" id="lightCreateAdminAds" style="width: 70%; height: inherit; left: 25%; top: 11%;">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Thêm Mới Quảng Cáo</h3>
+            <h3 class="panel-title">Thêm Mới Slider</h3>
         </div>
         <div class="panel-body">
-            <div class="row" id="divAdv">
-                <div class="col-lg-12" style="margin: 3px;">
+            <div class="row">
+                <div class="col-md-6" id="divNewSlider">
                     <div class="row">
-                        <div class="col-md-5">
-                            <div class="row" style="margin: 10px;">
-                                <span> Tên sự kiện quảng cáo <span style="color: red"> *</span></span>
-                            </div>
-                            <div class="row">
-                                <input class="form-control" type="text" placeholder="Tên sự kiện quảng cáo" id="txtAdminAdsEvent" style="margin: 10px;">
-                            </div>
-                            <div class="row" style="margin: 10px;">
-                                <span> Hình ảnh liên quan </span>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="row" style="text-align: center; margin: 15px; padding: 20px;">
-                                        <img style="width: 95%; height: 190px" id="imgPreviewAdminAds" src="<?php echo base_url() ?>assets/images/no_image.jpg"/>
-                                    </div>
-                                    <div class="row" id="divUploadAdminAds"></div>
-                                    <div class="row" style="text-align: center; margin-right: 20%; margin-left: 20%;">
-                                        <input type="hidden" id="divUploadAdminAdsID">
-                                        <div class="col-lg-4" style="border: 1px solid grey; width: 70px; height: 60px; margin-right: 5px; background-image: url('<?php echo base_url() ?>assets/images/plus.jpg')" id="div10" onclick="$('#divUploadAdminAdsID').val('div10'); $('#upload10').click();"></div>
-                                        <form id="frmUpload10" action="<?php echo base_url() ?>admin_advertisement/upload/1/upload10" method="POST" enctype="multipart/form-data">
-                                            <input type="file" id="upload10" name="upload10" style="display: none" onchange="$('#sbAcc10').click()"/>
-                                            <input type="submit" id="sbAcc10" name="sbAcc10" style="display: none" onclick="fileUpload(this.form, '<?php echo base_url() ?>admin_advertisement/upload/1/upload10', 'divUploadAdminAds', 'divUploadAdminAdsID', 'imgPreviewAdminAds'); return false;"/>
-                                        </form>
-                                        <div class="col-lg-4" style="border: 1px solid grey; width: 70px; height: 60px; margin-right: 5px; background-image: url('<?php echo base_url() ?>assets/images/plus.jpg')" id="div11" onclick="$('#divUploadAdminAdsID').val('div11'); $('#upload11').click();"></div>
-                                        <form id="frmUpload11" action="<?php echo base_url() ?>admin_advertisement/upload/2/upload11" method="POST" enctype="multipart/form-data">
-                                            <input type="file" id="upload11" name="upload11" style="display: none" onchange="$('#sbAcc11').click()"/>
-                                            <input type="submit" id="sbAcc11" name="sbAcc11" style="display: none" onclick="fileUpload(this.form, '<?php echo base_url() ?>admin_advertisement/upload/2/upload11', 'divUploadAdminAds', 'divUploadAdminAdsID', 'imgPreviewAdminAds'); return false;"/>
-                                        </form>
-                                        <div class="col-lg-4" style="border: 1px solid grey; width: 70px; height: 60px; margin-right: 5px; background-image: url('<?php echo base_url() ?>assets/images/plus.jpg')" id="div12" onclick="$('#divUploadAdminAdsID').val('div12'); $('#upload12').click();"></div>
-                                        <form id="frmUpload12" action="<?php echo base_url() ?>admin_advertisement/upload/3/upload12" method="POST" enctype="multipart/form-data">
-                                            <input type="file" id="upload12" name="upload12" style="display: none" onchange="$('#sbAcc12').click()"/>
-                                            <input type="submit" id="sbAcc12" name="sbAcc12" style="display: none" onclick="fileUpload(this.form, '<?php echo base_url() ?>admin_advertisement/upload/3/upload12', 'divUploadAdminAds', 'divUploadAdminAdsID', 'imgPreviewAdminAds'); return false;"/>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="row" style="margin: 10px;">
-                                <span> Thông tin liên quan đến sự kiện <span style="color: red"> *</span></span>
-                            </div>
-                            <div class="row" style="display: inline-block; margin: 10px;">
-                                <textarea name="txtAdminAdsContent" id="txtAdminAdsContent" style="width: 100%; height: 40%"></textarea>
-                            </div>
-                        </div>
+                        <span> Tên slider <span class="required"> *</span></span>
                     </div>
-                    <div class="row" style="margin: 10px;">
-                        <div class="col-md-12">
-                            <div class="row" style="margin: 20px; text-align: left;">
-                                <div class="col-md-5">
-                                    <span> Liên kết giới thiệu sự kiện nếu có </span>
-                                </div>
-                                <div class="col-md-7">
-                                    <input class="form-control" type="text" placeholder="http://....." id="txtAdminAdsEventURL">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" id="inlineCheckboxCreateAdminAds" checked> Hiển thị
-                                </label>
-                            </div>
-                            <div class="row" style="margin: 20px; text-align: center;">
-                                <span style="padding: 10px; width: 500px; background-color: darkorange; color: white; font-size: 18px; cursor: pointer; margin: 5px" id="spnCreateAdv" onclick="createNewAdminAds();">Đăng quảng cáo</span>
-                                <span style="padding: 10px; width: 500px; background-color: darkorange; color: white; font-size: 18px; cursor: pointer; margin: 5px" id="spnCreateAdv" onclick="lightbox_close('lightCreateAdminAds', 'fadeCreateAdminAds');">Đóng cửa sổ</span>
-                            </div>
-                        </div>
+                    <div class="row">
+                        <input class="form-control" type="text" id="txtAdminSliderName">
+                    </div>
+                    <div class="row">
+                        <span> Mô tả </span>
+                    </div>
+                    <div class="row">
+                        <input class="form-control" type="text" id="txtAdminSliderDescription">
+                    </div>
+                    <div class="row">
+                        <span> Đường dẫn liên kết </span>
+                    </div>
+                    <div class="row">
+                        <input class="form-control" type="text" id="txtAdminSliderLink">
+                    </div>
+                    <div class="row">
+                        <span> Thứ tự sắp xếp </span>
+                    </div>
+                    <div class="row">
+                        <input class="form-control" type="text" id="txtAdminSliderOrder">
+                    </div>
+                    <div class="row">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckboxCreateAdminSlider" checked> Hiển thị
+                        </label>
                     </div>
                 </div>
+                <div class="col-md-6" id="divNewSlider">
+                    <div class="row">
+                        <span> Tải hình ảnh <span style="color: red"> *</span></span>
+                    </div>
+                    <div class="row">
+                        <img class="imgPreviewAdmin" id="imgPreviewAdminSlider" src="<?php echo base_url() ?>assets/images/no-image.png"/>
+                    </div>
+                    <div class="row" id="divUploadAdminSlider"></div>
+                        <input type="hidden" id="divUploadAdminAdsID">
+                        <div class="row btn-upload" id="div11" onclick="$('#divUploadAdminAdsID').val('div11'); $('#upload11').click();"></div>
+                        <form id="frmUpload11" action="<?php echo base_url() ?>admin_advertisement/upload/2/upload11" method="POST" enctype="multipart/form-data">
+                            <input type="file" id="upload11" name="upload11" style="display: none" onchange="$('#sbAcc11').click()"/>
+                            <input type="submit" id="sbAcc11" name="sbAcc11" style="display: none" onclick="fileUpload(this.form, '<?php echo base_url() ?>admin_advertisement/upload/2/upload11', 'divUploadAdminAds', 'divUploadAdminAdsID', 'imgPreviewAdminAds'); return false;"/>
+                        </form>
+                    <div class="row">
+                        <span> Tiêu đề hình ảnh <span style="color: red"> *</span></span>
+                    </div>
+                    <div class="row">
+                        <input class="form-control" type="text" id="txtAdminSliderTitle">
+                    </div>
+                </div>
+            </div>
+            <div class="row divControlAdmin">
+                <button class="btn btn-warning" id="spnCreateAdv" onclick="createNewAdminAds();">Hoàn tất</button>
+                <button class="btn btn-warning" onclick="lightbox_close('lightCreateAdminAds', 'fadeCreateAdminAds');">Đóng cửa sổ</button>
             </div>
         </div>
     </div>

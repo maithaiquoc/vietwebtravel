@@ -26,12 +26,12 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active treeview">
+            <li class="treeview <?php if($type == 1){echo 'active';} ?>">
                 <a href="<?php echo base_url(); ?>admin/dashboard">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
                 </a>
             </li>
-            <li class="treeview">
+            <li class="treeview <?php if($type == 2){echo 'active';} ?>">
                 <a href="<?php echo base_url(); ?>admin/slider">
                     <i class="fa fa-files-o"></i>
                     <span>Slider</span>
