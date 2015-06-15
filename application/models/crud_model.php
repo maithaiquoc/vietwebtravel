@@ -123,5 +123,11 @@ class Crud_model extends CI_Model {
         }
         return 0;
     }
+
+    function max($field, $table){
+        $query = $this->db->query("SELECT $field FROM $table");
+        $row = $query->row_array();
+        return $row[$field];
+    }
 }
 ?>
