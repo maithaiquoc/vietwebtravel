@@ -1,5 +1,5 @@
 <?php include("head.php"); ?>
-<body onload="getTableAdsManager(1); getPage();" class="skin-blue">
+<body onload="getTableManager('divTableSliderManager', 'admin_slider', 'getTableSliderManager', 1); getPage('pageAdminSlider', 'admin_slider', 'getPage');" class="skin-blue">
 <div id="wrapper" class="wrapper">
 
     <?php include("header.php"); ?>
@@ -32,11 +32,11 @@
                 </div>
                 <div class="box-body">
                     <div class="row divRight">
-                        <button class="btn btn-primary pull-right" onclick="emptySessionAdminAdsCreate(); lightbox_open('lightCreateAdminAds', 'fadeCreateAdminAds');"><span class="glyphicon glyphicon-plus"></span> Thêm Mới</button>
+                        <button class="btn btn-primary pull-right" onclick="lightbox_open('lightCreateAdminSlider', 'fadeCreateAdminSlider');"><span class="glyphicon glyphicon-plus"></span> Thêm Mới</button>
                     </div>
-                    <div class="table-responsive" id="divTableAdsManager"></div>
+                    <div class="table-responsive" id="divTableSliderManager"></div>
                 </div><!-- /.box-body -->
-                <div class="box-footer" id="pageAdminAds"></div><!-- /.box-footer-->
+                <div class="box-footer" id="pageAdminSlider"></div><!-- /.box-footer-->
             </div><!-- /.box -->
 
         </section><!-- /.content -->
@@ -46,14 +46,14 @@
 <?php include("foot.php"); ?>
 
 <!-- input Create Control Panel -->
-<div class="light row" id="lightCreateAdminAds" style="width: 70%; height: inherit; left: 25%; top: 11%;">
+<div class="light row" id="lightCreateAdminSlider" style="width: 70%; height: inherit; left: 25%; top: 11%;">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Thêm Mới Slider</h3>
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-6" id="divNewSlider">
+                <div class="col-md-6 divPanelBody">
                     <div class="row">
                         <span> Tên slider <span class="required"> *</span></span>
                     </div>
@@ -76,7 +76,7 @@
                         <span> Thứ tự sắp xếp </span>
                     </div>
                     <div class="row">
-                        <input class="form-control" type="text" id="txtAdminSliderOrder">
+                        <input class="form-control" type="number" id="txtAdminSliderOrder" min="0" value="0" onchange="if($(this).val() < 0){this.value = 0;}">
                     </div>
                     <div class="row">
                         <label class="checkbox-inline">
@@ -84,20 +84,22 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-md-6" id="divNewSlider">
+                <div class="col-md-6 divPanelBody">
                     <div class="row">
                         <span> Tải hình ảnh <span style="color: red"> *</span> (Kích thước chuẩn: 2000x1125)</span>
                     </div>
                     <div class="row">
                         <img class="imgPreviewAdmin" id="imgPreviewAdminSlider" src="<?php echo base_url() ?>assets/images/no-image.png"/>
                     </div>
-                    <div class="row" id="divUploadAdminSlider"></div>
-                        <input type="hidden" id="divUploadAdminAdsID">
-                        <div class="row btn-upload" id="div11" onclick="$('#divUploadAdminAdsID').val('div11'); $('#upload11').click();"></div>
-                        <form id="frmUpload11" action="<?php echo base_url() ?>admin_advertisement/upload/2/upload11" method="POST" enctype="multipart/form-data">
-                            <input type="file" id="upload11" name="upload11" style="display: none" onchange="$('#sbAcc11').click()"/>
-                            <input type="submit" id="sbAcc11" name="sbAcc11" style="display: none" onclick="fileUpload(this.form, '<?php echo base_url() ?>admin_advertisement/upload/2/upload11', 'divUploadAdminAds', 'divUploadAdminAdsID', 'imgPreviewAdminAds'); return false;"/>
+                    <div class="row" id="imgPreviewSlider"></div>
+                    <div class="row">
+                        <form id="frmUploadSlider" action="<?php echo base_url() ?>admin_slider/upload" method="POST" enctype="multipart/form-data">
+                            <input class="form-control" type="file" id="sliderFile" name="sliderFile" onclick="$('#uploadSlider').hide(); $('#uploadSlider').html('');">
+                            <input type="submit" name="submit" value="Upload" class="form-control btn btn-success" onclick="fileUpload(this.form, '<?php echo base_url() ?>admin_slider/upload', 'uploadSlider', 'imgPreviewAdminSlider'); return false;"/>
                         </form>
+                    </div>
+                    <input type="hidden" id="hiddenUploadSlider" value="0">
+                    <div class="row" id="uploadSlider"></div>
                     <div class="row">
                         <span> Tiêu đề hình ảnh <span style="color: red"> *</span></span>
                     </div>
@@ -107,99 +109,13 @@
                 </div>
             </div>
             <div class="row divControlAdmin">
-                <button class="btn btn-warning" id="spnCreateAdv" onclick="createNewAdminAds();">Hoàn tất</button>
-                <button class="btn btn-warning" onclick="lightbox_close('lightCreateAdminAds', 'fadeCreateAdminAds');">Đóng cửa sổ</button>
+                <input type="hidden" id="hiddenURL" value="<?php echo base_url(); ?>">
+                <button class="btn btn-warning" onclick="emptySessionAdmin('admin_slider', 'emptyImageAdd'); emptySliderData();">Xóa thông tin đã điền</button>
+                <button class="btn btn-primary" id="spnCreateAdv" onclick="createNewAdminSlider();">Hoàn tất</button>
+                <button class="btn btn-danger" onclick="lightbox_close('lightCreateAdminSlider', 'fadeCreateAdminSlider');">Đóng cửa sổ</button>
             </div>
         </div>
     </div>
 </div>
-<div class="row fade" id="fadeCreateAdminAds" onClick="lightbox_close('lightCreateAdminAds', 'fadeCreateAdminAds');"></div>
+<div class="row fade" id="fadeCreateAdminSlider" onClick="lightbox_close('lightCreateAdminSlider', 'fadeCreateAdminSlider');"></div>
 <!-- end input Create Control Panel -->
-
-<!---------------------------------------- XÁC NHẬN ---------------------------------------- !>
-<!-- input Control Panel -->
-<div class="row light" id="lightAdminAdsConfirm" style="width: 400px; height: 200px; top: 30%; left: 35%; border: 1px solid #000">
-    <div class="col-lg-12">
-        <div class="row" style="background-color: orange; font-weight: bolder; font-size: 20px; margin: 10px; padding: 10px; color: gray; text-align: center"><span style="padding: 20px">XÁC NHẬN</span></div>
-        <p style="text-align: center; color: darkgreen; font-weight: bold">Sự kiện quảng cáo đã được tạo thành công!</p>
-        <div class="row" style="text-align: center">
-            <span style="padding: 10px; width: 500px; background-color: darkorange; color: white; font-size: 18px; cursor: pointer; margin: 30px" onclick="lightbox_close('lightAdminAdsConfirm', 'fadeAdminAdsConfirm');">Đóng cửa sổ</span>
-        </div>
-    </div>
-</div>
-<div class="fade" id="fadeAdminAdsConfirm" onClick="lightbox_close('lightAdminAdsConfirm', 'fadeAdminAdsConfirm');"></div>
-<!-- end input Control Panel -->
-
-<script>
-    function getTableAdsManager(i){
-        var url = "<?php echo base_url() ?>";
-        $('#divTableAdsManager').load(url+"admin_advertisement/getTableAdsManager/"+i);
-    }
-
-    function createNewAdminAds(){
-        var adName = $('#txtAdminAdsEvent').val();
-//        var adDes = Base64.encode($('#txtAdminAdsContentwysiwyg').contents().find("body").html());
-        var adDes = CKEDITOR.instances.txtAdminAdsContent.getData();
-        if(adName == '' || adDes == ''){
-            alert("Các thông đánh dấu * là các thông tin bắc buộc!");
-        }
-        else{
-            var adURL = $('#txtAdminAdsEventURL').val();
-            var active = 1;
-
-            if(!$('#inlineCheckboxCreateAdminAds').is(':checked') ){ //kiem tra neu checkbox khong duoc check
-                active = 0;
-            }
-
-            var dataString = "adName="+adName+"&adURL="+adURL+"&adDes="+adDes+"&active="+active;
-//            alert(dataString);
-            var url = "<?php echo base_url(); ?>";
-            $.ajax({
-                type: "POST",
-                url: url+"admin_advertisement/createNewAds",
-                data: dataString,
-                success: function(x){
-//                    alert(x);
-                    if(x != '0'){
-                        alert(x);
-                    }
-                    else{
-                        //alert("đăng quảng cáo thành công!");
-                        lightbox_close('lightCreateAdminAds', 'fadeCreateAdminAds');
-                        getTableAdsManager();
-                        getPage();
-                        lightbox_open('lightAdminAdsConfirm', 'fadeAdminAdsConfirm');
-                    }
-                }
-            });
-        }
-    }
-</script>
-
-<script>
-    function getPage(){
-        var url = "<?php echo base_url() ?>";
-        $.ajax({
-            url: url+"admin_advertisement/getPage",
-            success: function(x){
-                //alert(x);
-                $('#pageAdminAds').html(x);
-            }
-        });
-    }
-
-    function emptySessionAdminAdsCreate(){
-        var url = "<?php echo base_url() ?>";
-        $.ajax({
-            url: url+"admin_advertisement/emptySessionCreate",
-            success: function(x){
-//                alert(x);
-            }
-        });
-    }
-</script>
-
-<script>
-    //    $w.a('txtAdminAdsContent');
-    CKEDITOR.replace( 'txtAdminAdsContent' );
-</script>
