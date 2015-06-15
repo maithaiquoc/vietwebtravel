@@ -1,5 +1,5 @@
 <table class="table table-striped table-bordered table-hover">
-    <?php if(empty($adsList)){echo "<i>Hiện không có quảng cáo nào</i>";} else{ ?>
+    <?php if(empty($sliderList)){echo "<i>Hiện không có slider trong dữ liệu</i>";} else{ ?>
     <thead>
     <tr>
         <th>#</th>
