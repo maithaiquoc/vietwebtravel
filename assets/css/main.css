@@ -34,7 +34,7 @@
     padding: 10px 30px;
 }
 
-#divNewSlider .row{
+.divPanelBody .row{
     margin: 5px 0;
 }
 
@@ -52,8 +52,8 @@
 }
 
 .imgPreviewAdmin{
-    width: 100%;
-    height: 190px;
+    max-width: 100%;
+    height: auto;
 }
 
 .divControlAdmin{
@@ -63,4 +63,25 @@
 
 .divControlAdmin button{
     margin: 5px;
+}
+
+#uploadSlider{
+    padding: 10px 5px 0 5px;
+    display: none;
+}
+
+#pConfirm{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.panel-confirm{
+    height: 185px;
+}
+
+#lightAdminConfirm{
+    width: 400px;
+    height: 200px;
+    top: 30%;
+    left: 40%;
 }
