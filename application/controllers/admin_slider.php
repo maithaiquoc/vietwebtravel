@@ -17,11 +17,87 @@ class Admin_slider extends CI_Controller {
         $this->load->library("pagination");
     }
 
+    public function getTableSliderManager($start_from = 0)
+    {
+        $per_page = 4;
+        $config = array();
+        $config["base_url"] = base_url() . "/admin_slider/getTableSliderManager/";
+        $config["total_rows"] = $this->crud_model->selectNumOfPagination("*", "sliders AS sli", "sli.slider_flag = 0 ORDER BY sli.slider_order DESC, sli.addition_datetime DESC");
+        $config["per_page"] = $per_page;
+        $config["uri_segment"] = 3;
+        $config['full_tag_open'] = '<ul>';
+        $config['full_tag_close'] = '</ul>';
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active">';
+        $config['cur_tag_close'] = '</li> ';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li> ';
+        $config['next_link'] = 'Next';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['prev_link'] = 'Prev';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li> ';
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = round($choice);
+        $config['use_page_numbers'] = TRUE;
+        $start = $per_page * ($start_from-1);
+        if($start < 0){
+            $start = 0;
+        }
+        $data['sliderList'] = $this->crud_model->selectPagination($per_page, $start, "*", "sliders AS sli", "sli.slider_flag = 0 ORDER BY sli.slider_order DESC, sli.addition_datetime DESC");
+        $this->load->view('admin/slider/slider_list', $data);
+    }
+
+    public function getPage()
+    {
+        $result = $this->crud_model->selectNumOfPagination("*", "sliders AS sli", "sli.slider_flag = 0 ORDER BY sli.slider_order DESC, sli.addition_datetime DESC");
+        $data['num_links'] = $result/4;
+        $this->load->view('admin/slider/page', $data);
+    }
+
     public function upload()
     {
         $result = $this->crud->upload('slider_imagesAdd', 'sliderFile');
         echo $result;
     }
 
-    
+    public function insertNewSlider(){
+        $dt = date("Y-m-d H:i:s");
+
+        $idUser = $this->session->userdata('id');
+
+        $sliderName = $this->input->post('sliderName', true);
+        $sliderDescription = $this->input->post('sliderDescription', true);
+        $sliderLink = $this->input->post('sliderLink', true);
+        $sliderTitle = $this->input->post('sliderTitle', true);
+        $sliderOrder = $this->input->post('sliderOrder', true);
+        $sliderImage = $this->session->userdata('slider_imagesAdd');
+        $active = $this->input->post('active', true);
+
+        $idImage = $this->crud->insertImage($sliderImage, $sliderTitle);
+        if($idImage != -1){
+            $data = array(
+                'slider_name' => $sliderName,
+                'slider_description' => $sliderDescription,
+                'slider_link' => $sliderLink,
+                'slider_order' => $sliderOrder,
+                'slider_active' => $active,
+                'slider_flag' => 0,
+                'addition_datetime' => $dt,
+                'id_image' => $idImage,
+                'id_user' => $idUser
+            );
+            $query = $this->crud_model->insert("sliders", $data);
+            echo $query;
+        }
+        else{
+            echo "Đã xảy ra lỗi! Xin vui lòng tải lại trình duyệt và thử lại...";
+        }
+    }
+
+    public function emptyImageAdd(){
+        echo $this->crud->emptySession('slider_imagesAdd');
+    }
 }

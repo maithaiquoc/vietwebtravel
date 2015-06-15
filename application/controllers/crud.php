@@ -15,6 +15,7 @@ class Crud extends CI_Controller {
         $this->load->helper('html');
         $this->load->library('session');
         $this->load->model('users_model');
+        $this->load->model('crud_model');
         $this->load->library("pagination");
 
         $this->_gallery_url = base_url()."uploads/";
@@ -119,7 +120,7 @@ class Crud extends CI_Controller {
 
         $this->email->set_newline("\r\n");
 
-        $this->email->from('saromavn2014@gmail.com', 'www.saroma1.vthost.vn');
+        $this->email->from('vietweb2015@gmail.com', 'www.vietkingweb.com');
         $this->email->to($email);
         $this->email->subject($subject);
         $body = $this->load->view($view, $data, TRUE);
@@ -132,6 +133,22 @@ class Crud extends CI_Controller {
         }
         else{
             return 0;
+        }
+    }
+
+    public function insertImage($imageLink, $imageTitle){
+        $id = $this->crud_model->max("MAX(id_image)", "images") + 1;
+        $data = array(
+            'id_image' => $id,
+            'image_link' => $imageLink,
+            'image_title' => $imageTitle
+        );
+        $result = $this->crud_model->insert("images", $data);
+        if($result == 0){
+            return $id;
+        }
+        else{
+            return -1;
         }
     }
 }
