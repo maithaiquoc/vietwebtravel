@@ -1,25 +1,94 @@
-function prev(){
-    var page = ($('#list li.active').index()-1); <!-- lay index cua li dang gan lop active -->
-    $('#'+page).click();
+function createNewAdminSlider(){
+    var sliderName = $('#txtAdminSliderName').val();
+    var sliderTitle = $('#txtAdminSliderTitle').val();
+
+    if(sliderName == "" || sliderTitle == "" || $('#hiddenUploadSlider').val() == 0){
+        alert("Các thông đánh dấu * là các thông tin bắc buộc!");
+    }
+    else{
+        var sliderDescription = $('#txtAdminSliderDescription').val();
+        var sliderLink = $('#txtAdminSliderLink').val();
+        var sliderOrder = $('#txtAdminSliderOrder').val();
+        var active = 1;
+        if(!$('#inlineCheckboxCreateAdminSlider').is(':checked') ){ //kiem tra neu checkbox khong duoc check
+            active = 0;
+        }
+
+        var dataString = "sliderName="+sliderName+"&sliderDescription="+sliderDescription+"&sliderLink="+sliderLink+"&sliderOrder="+sliderOrder+"&sliderTitle="+sliderTitle+"&active="+active;
+        insert(dataString, "admin_slider", "insertNewSlider", "Tạo slider thành công!", "lightCreateAdminSlider", "fadeCreateAdminSlider");
+    }
 }
 
-function next(){
-    var page = ($('#list li.active').index()+1);
-    $('#'+page).click();
+function emptySliderData(){
+    $('#txtAdminSliderName').val('');
+    $('#txtAdminSliderDescription').val('');
+    $('#txtAdminSliderLink').val('');
+    $('#txtAdminSliderOrder').val(0);
+    $('#txtAdminSliderTitle').val('');
+    $('#inlineCheckboxCreateAdminSlider').prop("checked", true);
+    $('#imgPreviewAdminSlider').attr("src", $('#hiddenURL').val() + "assets/images/no-image.png");
+    $('#sliderFile').val('');
+    $('#hiddenUploadSlider').val(0);
+    $('#uploadSlider').hide();
 }
 
-function lightbox_open(idLight, idFade){
-    window.scrollTo(0,0);
-    document.getElementById(idLight).style.display='block';
-    document.getElementById(idFade).style.display='block';
+function insert(dataString, cont, func, strSuccess, light, fade){
+    var url = $('#hiddenURL').val();
+    var dataString = dataString;
+    var cont = cont;
+    var func = func;
+    var strSuccess = strSuccess;
+    var light = light;
+    var fade = fade;
+    $.ajax({
+        type: "POST",
+        url: url+cont+"/"+func,
+        data: dataString,
+        success: function(x){
+            if(x != 0){
+                alert(x);
+            }
+            else{
+                $('#pConfirm').html(strSuccess);
+                lightbox_close(light, fade);
+                getTableSliderManager();
+                getPage();
+                lightbox_open('lightAdminConfirm', 'fadeAdminConfirm');
+            }
+        }
+    });
 }
 
-function lightbox_close(idLight, idFade){
-    document.getElementById(idLight).style.display='none';
-    document.getElementById(idFade).style.display='none';
+function emptySessionAdmin(cont, func){
+    var cont = cont;
+    var func = func;
+    var url = $('#hiddenURL').val();
+    $.ajax({
+        url: url+cont+"/"+func
+    });
 }
 
-function fileUpload(form, action_url, div_id, div_upload, div_preview) {
+function getTableManager(divTable, cont, func, i){
+    var cont = cont;
+    var func = func;
+    var url = $('#hiddenURL').val();
+    $('#'+divTable).load(url+cont+"/"+func+"/"+i);
+}
+
+function getPage(divPage, cont, func){
+    var cont = cont;
+    var func = func;
+    var url = $('#hiddenURL').val();
+    $.ajax({
+        url: url+cont+"/"+func,
+        success: function(x){
+            //alert(x);
+            $('#'+divPage).html(x);
+        }
+    });
+}
+
+function fileUpload(form, action_url, div_id, div_preview) {
     // Create the iframe...
     var iframe = document.createElement("iframe");
     iframe.setAttribute("id", "upload_iframe");
@@ -50,21 +119,23 @@ function fileUpload(form, action_url, div_id, div_upload, div_preview) {
             content = iframeId.document.body.innerHTML;
         }
 
+        $('#'+div_id).show();
         if(content != "<p>You did not select a file to upload.</p>"){
             var num = content.split(/[^ \t\r\n]/)[0].length; //dem so khoang trang
 //                alert(num);
             if(num == 0){
-                var idDiv2 = $('#'+div_upload+'').val();
-//                    alert(idDiv2);
-                var divID2 = document.getElementById(idDiv2);
-                divID2.style.backgroundSize = "70px 60px";
-                divID2.style.backgroundImage = "url('<?php echo base_url() ?>uploads/"+content+"')";
-                $('#'+div_preview+'').attr('src', '<?php echo base_url() ?>uploads/'+content+'');
+                $('#'+div_preview+'').attr('src', "../uploads/"+content);
             }
+            $('#hiddenUploadSlider').val('1');
+            $('#'+div_id).css('border', '1px solid #00A65A');
+            document.getElementById(div_id).innerHTML = "<p>Uploaded successfully!</p>";
         }
-
+        else{
+            $('#hiddenUploadSlider').val('0');
+            $('#'+div_id).css('border', '1px solid red');
+            document.getElementById(div_id).innerHTML = content;
+        }
 //            alert(content);
-        document.getElementById(div_id).innerHTML = content;
 
         // Del the iframe...
         setTimeout('iframeId.parentNode.removeChild(iframeId)', 250);
@@ -84,4 +155,25 @@ function fileUpload(form, action_url, div_id, div_upload, div_preview) {
     form.submit();
 
     document.getElementById(div_id).innerHTML = "Đang tải tập tin...";
+}
+
+function prev(){
+    var page = ($('#list li.active').index()-1); <!-- lay index cua li dang gan lop active -->
+    $('#'+page).click();
+}
+
+function next(){
+    var page = ($('#list li.active').index()+1);
+    $('#'+page).click();
+}
+
+function lightbox_open(idLight, idFade){
+    window.scrollTo(0,0);
+    document.getElementById(idLight).style.display='block';
+    document.getElementById(idFade).style.display='block';
+}
+
+function lightbox_close(idLight, idFade){
+    document.getElementById(idLight).style.display='none';
+    document.getElementById(idFade).style.display='none';
 }
