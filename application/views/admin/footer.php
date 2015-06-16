@@ -8,17 +8,17 @@
         <div class="panel-body text-center">
             <div class="row"><p id="pConfirm"></p></div>
             <div class="row">
-                <button class="btn btn-warning" onclick="lightbox_close('lightAdminConfirm', 'fadeAdminConfirm');">Đóng cửa sổ</button>
+                <button class="btn btn-warning" onclick="lightbox_close('lightAdminConfirm', 'fadeAdminConfirm'); location.reload();">Đóng cửa sổ</button>
             </div>
         </div>
     </div>
 </div>
-<div class="fade" id="fadeAdminConfirm" onClick="lightbox_close('lightAdminConfirm', 'fadeAdminConfirm');"></div>
+<div class="fade" id="fadeAdminConfirm" onClick="lightbox_close('lightAdminConfirm', 'fadeAdminConfirm'); location.reload();"></div>
 <!-- end input Control Panel -->
 
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> 2.0
+        <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2015 <a href="http://vietkingweb.com/">Viet King Web</a>.</strong> All rights reserved.
 </footer>

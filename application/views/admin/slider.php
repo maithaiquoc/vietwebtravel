@@ -76,7 +76,7 @@
                         <span> Thứ tự sắp xếp </span>
                     </div>
                     <div class="row">
-                        <input class="form-control" type="number" id="txtAdminSliderOrder" min="0" value="0" onchange="if($(this).val() < 0){this.value = 0;}">
+                        <input class="form-control" type="number" id="txtAdminSliderOrder" min="1" value="1" onchange="if($(this).val() < 1){this.value = 1;}">
                     </div>
                     <div class="row">
                         <label class="checkbox-inline">
@@ -95,7 +95,7 @@
                     <div class="row">
                         <form id="frmUploadSlider" action="<?php echo base_url() ?>admin_slider/upload" method="POST" enctype="multipart/form-data">
                             <input class="form-control" type="file" id="sliderFile" name="sliderFile" onclick="$('#uploadSlider').hide(); $('#uploadSlider').html('');">
-                            <input type="submit" name="submit" value="Upload" class="form-control btn btn-success" onclick="fileUpload(this.form, '<?php echo base_url() ?>admin_slider/upload', 'uploadSlider', 'imgPreviewAdminSlider'); return false;"/>
+                            <input type="submit" name="submit" value="Upload" class="form-control btn btn-success" onclick="fileUpload(this.form, '<?php echo base_url() ?>admin_slider/upload', 'uploadSlider', 'imgPreviewAdminSlider', 'hiddenUploadSlider'); return false;"/>
                         </form>
                     </div>
                     <input type="hidden" id="hiddenUploadSlider" value="0">
