@@ -65,7 +65,7 @@
     margin: 5px;
 }
 
-#uploadSlider{
+#uploadSlider, #uploadEditSlider{
     padding: 10px 5px 0 5px;
     display: none;
 }
