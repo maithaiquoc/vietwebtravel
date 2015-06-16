@@ -1,3 +1,4 @@
+// ----- slider ----- //
 function createNewAdminSlider(){
     var sliderName = $('#txtAdminSliderName').val();
     var sliderTitle = $('#txtAdminSliderTitle').val();
@@ -15,7 +16,58 @@ function createNewAdminSlider(){
         }
 
         var dataString = "sliderName="+sliderName+"&sliderDescription="+sliderDescription+"&sliderLink="+sliderLink+"&sliderOrder="+sliderOrder+"&sliderTitle="+sliderTitle+"&active="+active;
-        insert(dataString, "admin_slider", "insertNewSlider", "Tạo slider thành công!", "lightCreateAdminSlider", "fadeCreateAdminSlider");
+        perform(dataString, "admin_slider", "insertNewSlider", "Tạo slider thành công!", "lightCreateAdminSlider", "fadeCreateAdminSlider");
+    }
+}
+
+function setValueUpdateEditAdminSlider(sliderID, imageID, slider_name, slider_des, slider_link, slider_order, active, imageLink, imageTitle){
+    emptySessionAdmin("admin_slider", "emptyImageEdit");
+    $('#txtEditAdminSliderName').val(slider_name);
+    $('#txtEditAdminSliderDescription').val(slider_des);
+    $('#txtEditAdminSliderLink').val(slider_link);
+    $('#txtEditAdminSliderOrder').val(slider_order);
+    $('#txtEditAdminSliderTitle').val(imageTitle);
+    $('#imgEditPreviewAdminSlider').attr("src", "../uploads/"+imageLink);
+    $('#hiddenEditAdminSliderImagesLink').val(imageLink);
+    $('#sliderEditFile').val('');
+    $('#hiddenEditUploadSlider').val(1);
+    $('#uploadEditSlider').hide();
+    $('#hiddenEditAdminSliderID').val(sliderID);
+    $('#hiddenEditAdminSliderIDImages').val(imageID);
+
+    if(active == 0){
+        $('#inlineCheckboxEditAdminSlider').prop("checked", false);
+    }
+    else{
+        $('#inlineCheckboxEditAdminSlider').prop("checked", true);
+    }
+
+    lightbox_open('lightEditAdminSlider', 'fadeEditAdminSlider');
+}
+
+function updateSlider(){
+    var sliderName = $('#txtEditAdminSliderName').val();
+    var sliderTitle = $('#txtEditAdminSliderTitle').val();
+
+    if(sliderName == "" || sliderTitle == "" || $('#hiddenEditUploadSlider').val() == 0){
+        alert("Các thông đánh dấu * là các thông tin bắc buộc!");
+    }
+    else{
+        var sliderDescription = $('#txtEditAdminSliderDescription').val();
+        var sliderLink = $('#txtEditAdminSliderLink').val();
+        var sliderOrder = $('#txtEditAdminSliderOrder').val();
+        var sliderID = $('#hiddenEditAdminSliderID').val();
+        var imageID = $('#hiddenEditAdminSliderIDImages').val();
+        var imageLink = $('#hiddenEditAdminSliderImagesLink').val();
+
+        var active = 1;
+        if(!$('#inlineCheckboxEditAdminSlider').is(':checked') ){
+            active = 0;
+        }
+
+        var dataString = "sliderName="+sliderName+"&sliderDescription="+sliderDescription+"&sliderLink="+sliderLink+"&sliderOrder="+sliderOrder
+            +"&sliderTitle="+sliderTitle+"&active="+active+"&sliderID="+sliderID+"&imageID="+imageID+"&imageLink="+imageLink;
+        perform(dataString, "admin_slider", "updateSlider", "Cập nhật slider thành công!", "lightEditAdminSlider", "fadeEditAdminSlider");
     }
 }
 
@@ -32,7 +84,8 @@ function emptySliderData(){
     $('#uploadSlider').hide();
 }
 
-function insert(dataString, cont, func, strSuccess, light, fade){
+// ----- manager function ----- //
+function perform(dataString, cont, func, strSuccess, light, fade){
     var url = $('#hiddenURL').val();
     var dataString = dataString;
     var cont = cont;
@@ -40,6 +93,7 @@ function insert(dataString, cont, func, strSuccess, light, fade){
     var strSuccess = strSuccess;
     var light = light;
     var fade = fade;
+    alert(dataString);
     $.ajax({
         type: "POST",
         url: url+cont+"/"+func,
@@ -51,8 +105,6 @@ function insert(dataString, cont, func, strSuccess, light, fade){
             else{
                 $('#pConfirm').html(strSuccess);
                 lightbox_close(light, fade);
-                getTableSliderManager();
-                getPage();
                 lightbox_open('lightAdminConfirm', 'fadeAdminConfirm');
             }
         }
@@ -88,7 +140,7 @@ function getPage(divPage, cont, func){
     });
 }
 
-function fileUpload(form, action_url, div_id, div_preview) {
+function fileUpload(form, action_url, div_id, div_preview, divCheckUpload) {
     // Create the iframe...
     var iframe = document.createElement("iframe");
     iframe.setAttribute("id", "upload_iframe");
@@ -126,13 +178,14 @@ function fileUpload(form, action_url, div_id, div_preview) {
             if(num == 0){
                 $('#'+div_preview+'').attr('src', "../uploads/"+content);
             }
-            $('#hiddenUploadSlider').val('1');
+            $('#'+divCheckUpload).val('1');
             $('#'+div_id).css('border', '1px solid #00A65A');
             document.getElementById(div_id).innerHTML = "<p>Uploaded successfully!</p>";
         }
         else{
-            $('#hiddenUploadSlider').val('0');
+            $('#'+divCheckUpload).val('0');
             $('#'+div_id).css('border', '1px solid red');
+            $('#'+div_preview+'').attr('src', src="../assets/images/no-image.png");
             document.getElementById(div_id).innerHTML = content;
         }
 //            alert(content);
