@@ -22,7 +22,7 @@ class Admin_slider extends CI_Controller {
         $per_page = 4;
         $config = array();
         $config["base_url"] = base_url() . "/admin_slider/getTableSliderManager/";
-        $config["total_rows"] = $this->crud_model->selectNumOfPagination("*", "sliders AS sli", "sli.slider_flag = 0 ORDER BY sli.slider_order DESC, sli.addition_datetime DESC");
+        $config["total_rows"] = $this->crud_model->selectNumOfPagination("*", "sliders AS sli, images AS im", "sli.id_image = im.id_image AND sli.slider_flag = 0 ORDER BY sli.slider_order, sli.addition_datetime DESC");
         $config["per_page"] = $per_page;
         $config["uri_segment"] = 3;
         $config['full_tag_open'] = '<ul>';
@@ -46,13 +46,13 @@ class Admin_slider extends CI_Controller {
         if($start < 0){
             $start = 0;
         }
-        $data['sliderList'] = $this->crud_model->selectPagination($per_page, $start, "*", "sliders AS sli", "sli.slider_flag = 0 ORDER BY sli.slider_order DESC, sli.addition_datetime DESC");
+        $data['sliderList'] = $this->crud_model->selectPagination($per_page, $start, "*", "sliders AS sli, images AS im", "sli.id_image = im.id_image AND sli.slider_flag = 0 ORDER BY sli.slider_order, sli.addition_datetime DESC");
         $this->load->view('admin/slider/slider_list', $data);
     }
 
     public function getPage()
     {
-        $result = $this->crud_model->selectNumOfPagination("*", "sliders AS sli", "sli.slider_flag = 0 ORDER BY sli.slider_order DESC, sli.addition_datetime DESC");
+        $result = $this->crud_model->selectNumOfPagination("*", "sliders AS sli, images AS im", "sli.id_image = im.id_image AND sli.slider_flag = 0 ORDER BY sli.slider_order, sli.addition_datetime DESC");
         $data['num_links'] = $result/4;
         $this->load->view('admin/slider/page', $data);
     }
@@ -60,6 +60,12 @@ class Admin_slider extends CI_Controller {
     public function upload()
     {
         $result = $this->crud->upload('slider_imagesAdd', 'sliderFile');
+        echo $result;
+    }
+
+    public function uploadEdit()
+    {
+        $result = $this->crud->upload('slider_imagesEdit', 'sliderEditFile');
         echo $result;
     }
 
@@ -97,7 +103,52 @@ class Admin_slider extends CI_Controller {
         }
     }
 
+    public function updateSlider(){
+        $dt = date("Y-m-d H:i:s");
+
+        $sliderName = $this->input->post('sliderName', true);
+        $sliderDescription = $this->input->post('sliderDescription', true);
+        $sliderLink = $this->input->post('sliderLink', true);
+        $sliderTitle = $this->input->post('sliderTitle', true);
+        $sliderOrder = $this->input->post('sliderOrder', true);
+        $sliderID = $this->input->post('sliderID', true);
+        $imageID = $this->input->post('imageID', true);
+
+        $sliderImage = $this->session->userdata('slider_imagesEdit');
+        if($sliderImage == ''){
+            $sliderImage = $this->input->post('imageLink', true);
+        }
+
+        $active = $this->input->post('active', true);
+
+        $images = array(
+            'image_link' => $sliderImage,
+            'image_title' => $sliderTitle
+        );
+        $queryImage = $this->crud_model->update("id_image", $imageID, "images", $images);
+
+        if($queryImage == 0){
+            $sliders = array(
+                'slider_name' => $sliderName,
+                'slider_description' => $sliderDescription,
+                'slider_link' => $sliderLink,
+                'slider_order' => $sliderOrder,
+                'slider_active' => $active,
+                'update_datetime' => $dt,
+            );
+            $querySlider = $this->crud_model->update("id_slider", $sliderID, "sliders", $sliders);
+            echo $querySlider;
+        }
+        else{
+            echo "Đã xảy ra lỗi! Xin vui lòng tải lại trình duyệt và thử lại...";
+        }
+    }
+
     public function emptyImageAdd(){
         echo $this->crud->emptySession('slider_imagesAdd');
+    }
+
+    public function emptyImageEdit(){
+        echo $this->crud->emptySession('slider_imagesEdit');
     }
 }
