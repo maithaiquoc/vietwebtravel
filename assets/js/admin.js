@@ -71,6 +71,18 @@ function updateSlider(){
     }
 }
 
+function deleteSlider(id){
+    var check = confirm("Bạn chắc chắn muốn xóa?");
+    if(check == true){
+        var id = id;
+        var dataString = "id="+id;
+        perform(dataString, "admin_slider", "deleteSlider", "Xóa slider thành công!", "lightEditAdminSlider", "fadeEditAdminSlider");
+    }
+    else{
+        return;
+    }
+}
+
 function emptySliderData(){
     $('#txtAdminSliderName').val('');
     $('#txtAdminSliderDescription').val('');
@@ -93,7 +105,6 @@ function perform(dataString, cont, func, strSuccess, light, fade){
     var strSuccess = strSuccess;
     var light = light;
     var fade = fade;
-    alert(dataString);
     $.ajax({
         type: "POST",
         url: url+cont+"/"+func,
