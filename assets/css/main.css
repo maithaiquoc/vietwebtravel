@@ -65,7 +65,7 @@
     margin: 5px;
 }
 
-#uploadSlider, #uploadEditSlider{
+.divUpload{
     padding: 10px 5px 0 5px;
     display: none;
 }
@@ -85,3 +85,40 @@
     top: 30%;
     left: 40%;
 }
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    margin: auto;
+}
+
+.travel-phone{
+    padding: 5px !important;
+    background-color: #2A70D2;
+}
+
+@media (min-width: 992px) {
+    .carousel-inner > .item > img,
+    .carousel-inner > .item > a > img {
+        min-height: 720px;
+    }
+
+    .travel-header{
+        padding: 2.5em 0 2.5em;
+        position: absolute !important;
+        top: 0 !important;
+        width: 100%;
+    }
+}
+
+@media (max-width: 991px) {
+    .scroll{
+        color: black !important;
+    }
+}
+
+.navbar-brand{
+    padding: 5px;
+}
+
+
+
