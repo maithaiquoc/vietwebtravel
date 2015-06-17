@@ -144,6 +144,12 @@ class Admin_slider extends CI_Controller {
         }
     }
 
+    public function deleteSlider(){
+        $id = $this->input->post('id');
+        $query = $this->crud_model->deleteID('id_slider', $id, "sliders", "slider_flag");
+        echo $query;
+    }
+
     public function emptyImageAdd(){
         echo $this->crud->emptySession('slider_imagesAdd');
     }
