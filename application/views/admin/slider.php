@@ -99,7 +99,7 @@
                         </form>
                     </div>
                     <input type="hidden" id="hiddenUploadSlider" value="0">
-                    <div class="row" id="uploadSlider"></div>
+                    <div class="row divUpload" id="uploadSlider"></div>
                     <div class="row">
                         <span> Tiêu đề hình ảnh <span style="color: red"> *</span></span>
                     </div>
