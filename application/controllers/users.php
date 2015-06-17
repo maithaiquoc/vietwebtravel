@@ -98,43 +98,7 @@ class Users extends CI_Controller {
 
     public function login()
     {
-        $ip = $this->session->userdata('ip_address');
-        $check = $this->users_model->getSessionTable($ip);
-        $isLogin = $this->session->userdata('email');
-        if($check != 0){
-            $field= "user_data";
-            $email = $this->users_model->getEmailSessionTable($field, $ip);
-            $field2 = 'admin';
-            $admin = $this->users_model->getInfoUser($field2, $email);
-            $field3 = 'id';
-            $id = $this->users_model->getInfoUser($field3, $email);
-            $data = array(
-                'email' => $email,
-                'isAdmin' => $admin,
-                'id' => $id
-            );
-            $this->session->set_userdata($data);
-            $this->session->set_userdata('new_expiration',1209600); //2 weeks
-            $this->session->sess_update(); //force the session to update the cookie and/or database
-            header("location:javascript://history.go(-1)");
-        }
-        else if($isLogin != ''){
-            $email = $isLogin;
-            $field2 = 'admin';
-            $admin = $this->users_model->getInfoUser($field2, $email);
-            $field3 = 'id';
-            $id = $this->users_model->getInfoUser($field3, $email);
-            $data = array(
-                'email' => $email,
-                'isAdmin' => $admin,
-                'id' => $id
-            );
-            $this->session->set_userdata($data);
-            header("location:javascript://history.go(-1)");
-        }
-        else{
-            $this->load->view('admin/login');
-        }
+        $this->load->view('admin/login');
     }
 
     public function logOut()
