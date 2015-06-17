@@ -115,8 +115,8 @@ class Crud_model extends CI_Model {
     }
 
     // to delete by updating flag = 1
-    function deleteID($condition, $id, $table){
-        $query = $this->db->query("UPDATE ".$table." SET flag = 1 WHERE ".$condition." = ".$id."");
+    function deleteID($condition, $id, $table, $field){
+        $query = $this->db->query("UPDATE ".$table." SET ".$field." = 1 WHERE ".$condition." = ".$id."");
         if(!$query){
             $error = $this->db->_error_message();
             return $error;
