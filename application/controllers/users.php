@@ -45,8 +45,7 @@ class Users extends CI_Controller {
             else{
                 if($checkAdminLogin != 0){
                     if($remember == 1){
-                        $this->storeSession($email);
-                        $this->session->set_userdata('new_expiration',1209600); //2 weeks
+                        $this->session->set_userdata('new_expiration', 1209600); //2 weeks
                         $this->session->sess_update(); //force the session to update the cookie and/or database
                     }
                     $this->setInfoLogin($email);
@@ -77,23 +76,6 @@ class Users extends CI_Controller {
             'id' => $id
         );
         $this->session->set_userdata($data);
-    }
-
-    public function storeSession($email){
-        $session_id = $this->session->userdata('session_id');
-        $ip_address = $this->session->userdata('ip_address');
-        $user_agent = $this->session->userdata('user_agent');
-        $last_activity = $this->session->userdata('last_activity');
-        $user_data = $email;
-
-        $data = array(
-            'session_id' => $session_id,
-            'ip_address' => $ip_address,
-            'user_agent' => $user_agent,
-            'last_activity' => $last_activity,
-            'user_data' => $user_data
-        );
-        $this->crud_model->insert('ci_sessions', $data);
     }
 
     public function login()
