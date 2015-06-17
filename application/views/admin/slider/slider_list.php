@@ -36,7 +36,7 @@
             , $("#hidAdminEditAdminSliderOrder<?php echo $i ?>").val(), $("#hidAdminEditAdminSliderActive<?php echo $i ?>").val(), $("#hidAdminEditAdminSliderImageLink<?php echo $i ?>").val(), $("#hidAdminEditAdminSliderImageTitle<?php echo $i ?>").val());'>
                 <span class='glyphicon glyphicon-pencil'></span>
             </a>
-            <a class='btn btn-danger btn-xs pull-right' onclick="deleteSlider('<?php echo $objSliderList->id_slider ?>')"><span class='glyphicon glyphicon-remove'></span></a>
+            <a class='btn btn-danger btn-xs pull-right' onclick="deleteSlider('<?php echo $objSliderList->id_slider ?>');"><span class='glyphicon glyphicon-remove'></span></a>
         </td>
     </tr>
     <?php $i++; } ?>
@@ -97,7 +97,7 @@
                     </form>
                 </div>
                 <input type="hidden" id="hiddenEditUploadSlider" value="1">
-                <div class="row" id="uploadEditSlider"></div>
+                <div class="row divUpload" id="uploadEditSlider"></div>
                 <div class="row">
                     <span> Tiêu đề hình ảnh <span style="color: red"> *</span></span>
                 </div>
@@ -120,34 +120,4 @@
 <div class="row fade" id="fadeEditAdminSlider" onClick="lightbox_close('lightEditAdminSlider', 'fadeEditAdminSlider');"></div>
 <!-- end Edit Control Panel -->
 
-<script>
-    function deleteSlider(id){
-        //alert(id);
-        var check = confirm("Bạn chắc chắn muốn xóa?");
-        if(check == true){
-            var id = id;
-            var url = "<?php echo base_url() ?>";
-            var dataString = "id="+id;
-
-            $.ajax({
-                type: "POST",
-                url: url+"admin_advertisement/deleteSlider",
-                data: dataString,
-                success: function(x){
-                    //alert(x);
-                    if(x == '0'){
-                        getTableSliderManager();
-                        getPage();
-                    }
-                    else{
-                        alert(x);
-                    }
-                }
-            });
-        }
-        else{
-            return;
-        }
-    }
-</script>
 
