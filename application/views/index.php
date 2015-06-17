@@ -1,39 +1,90 @@
 <?php include("head.php"); ?>
 <body>
 <!---->
-<div class="banner">
-	 <div class="container">
-		 <div class="header">	 
-			 <div class="logo wow fadeInLeft" data-wow-delay="0.5s">
-			    <a href="index.html"><img src="<?php echo base_url(); ?>assets/images/logo.png" alt=""/></a>
-             </div>
-			 <div class="top-menu">
-				 <span class="menu"> </span> 
-				 <ul>
-					 <li><a class="scroll" href="#home">HOME</a></li>
-					 <li><a class="scroll" href="#brief">BRIEF</a></li>
-					 <li><a class="scroll" href="#features">TOURS</a></li>
-					 <li><a class="scroll" href="#pricing">PRICING</a></li>
-					 <li><a class="scroll" href="#screenshots">GALLERY</a></li>
-					 <li><a class="scroll" href="#testimonial">BLOG</a></li>
-					 <li><a class="scroll" href="#contact">CONTACT</a></li>
-				 </ul>
-			 </div>
-			 <div class="clearfix"> </div>
-			 </div>
-			 <!-- script-for-menu -->
-		 <script>					
-					$("span.menu").click(function(){
-						$(".top-menu ul").slideToggle("slow" , function(){
-						});
-					});
-		 </script>
-		 		 <div id="home" class="banner-text wow fadeInUp" data-wow-delay="0.5s">
-			 <h1>Awesome Trip <span>Yugoslavia</span> In The<label>World</label></h1>
-			 <h2>Accelerator photo sharing business school drop out ramen hustle crush it revenue traction platforms. Coworking viral landing page user base.</h2>
-		 </div>
-	</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="<?php echo base_url(); ?>uploads/cfa2b9a4b02fe1373bc69bbf40be039d.jpg" alt="Chania">
+                    <div class="carousel-caption">
+                        <div id="home" class="banner-text wow fadeInUp" data-wow-delay="0.5s">
+                            <h1>Awesome Trip <span>Yugoslavia</span> In The<label>World</label></h1>
+                            <h2>Accelerator photo sharing business school drop out ramen hustle crush it revenue traction platforms. Coworking viral landing page user base.</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="<?php echo base_url(); ?>uploads/c734ac7ae664a9d1582eeefbf66cd348.jpg" alt="Chania">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row travel-header">
+        <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
+            <div class="row">
+                <div class="logo wow fadeInLeft" data-wow-delay="0.5s">
+                    <a href="index.html"><img src="<?php echo base_url(); ?>assets/images/logo.png" alt=""/></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <div class="row">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand hidden-lg hidden-md" href="#"><img style="height: 40px; max-width: 100%;" src="<?php echo base_url(); ?>assets/images/logo.png"></a>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                                <li><a href="#">Link</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">One more separated link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="alert alert-info">
+                    <strong>ĐT: 08 66 85 23 66 - Hotline: 090 3 378 266</strong>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 <div id="brief" class="brief">
 	 <div class="container">
 	 	<h4>BRIEF</h4>
