@@ -103,11 +103,6 @@ class Users extends CI_Controller {
 
     public function logOut()
     {
-        $ip = $this->session->userdata('ip_address');
-        $check = $this->users_model->getSessionTable($ip);
-        if($check != ''){
-            $this->crud_model->delete('ip_address', $ip, 'ci_sessions');
-        }
         $this->session->sess_destroy();
         redirect(base_url());
     }
