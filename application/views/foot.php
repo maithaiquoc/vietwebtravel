@@ -11,7 +11,12 @@
         $().UItoTop({ easingType: 'easeOutQuart' });
     });
 </script>
+<!-- Bootstrap's JavaScript -->
+<script src="<?php echo base_url(); ?>assets/js/jquery-1.11.1.js"></script>
+<!-- jQuery (Bootstrap's JavaScript plugins) -->
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.js"></script>
+<!-- Min Bootstrap's JavaScript -->
+<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!---->
 </body>

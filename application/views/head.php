@@ -4,8 +4,6 @@
     <title>Trip a Travel Agency Flat Bootstarp Responsive Web Template| Home :: w3layouts</title>
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link href="<?php echo base_url(); ?>assets/css/main.css" rel='stylesheet' type='text/css' />
-    <!-- jQuery (Bootstrap's JavaScript plugins) -->
-    <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.1.js"></script>
     <!-- Custom Theme files -->
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,4 +39,8 @@
             $(".swipebox").swipebox();
         });
     </script>
+    <!-- jQuery 2.1.3 -->
+    <script src="<?php echo base_url(); ?>plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <!-- Bootstrap's JavaScript -->
+    <script src="http://s3.amazonaws.com/stockpr-test-store/esph2/files/js/bootstrap.min.js"></script>
 </head>

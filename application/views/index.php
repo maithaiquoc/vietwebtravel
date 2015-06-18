@@ -7,25 +7,24 @@
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
+            <?php for($i = 0; $i < count($sliders); $i++){ ?>
+                <li data-target="#myCarousel" data-slide-to="<?php echo $i; ?>" <?php if($i == 0){echo 'class="active"';} ?></li>
+            <?php } ?>
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img src="<?php echo base_url(); ?>uploads/cfa2b9a4b02fe1373bc69bbf40be039d.jpg" alt="Chania">
+                <?php for($i = 0; $i < count($sliders); $i++){ ?>
+                <div class="item <?php if($i == 0){echo 'active';} ?>">
+                    <img src="<?php echo base_url(); ?>uploads/<?php echo $sliders[$i]['image_link']; ?>" alt="<?php echo $sliders[$i]['image_title']; ?>">
                     <div class="carousel-caption">
                         <div id="home" class="banner-text wow fadeInUp" data-wow-delay="0.5s">
-                            <h1>Awesome Trip <span>Yugoslavia</span> In The<label>World</label></h1>
-                            <h2>Accelerator photo sharing business school drop out ramen hustle crush it revenue traction platforms. Coworking viral landing page user base.</h2>
+                            <h1 class="carousel-h1"><?php echo $sliders[$i]['slider_name']; ?></h1>
+                            <h2><?php echo $sliders[$i]['slider_description']; ?></h2>
                         </div>
                     </div>
                 </div>
-
-                <div class="item">
-                    <img src="<?php echo base_url(); ?>uploads/c734ac7ae664a9d1582eeefbf66cd348.jpg" alt="Chania">
-                </div>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -55,20 +54,10 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                                <li><a href="#">Link</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">Separated link</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">One more separated link</a></li>
-                                    </ul>
-                                </li>
+                                <li <?php if($type == 1) echo 'class="active"'; ?>><a href="#"> Trang chủ <span class="sr-only">(current)</span></a></li>
+                                <li <?php if($type == 2) echo 'class="active"'; ?>><a href="#"> Tours </a></li>
+                                <li <?php if($type == 3) echo 'class="active"'; ?>><a href="#"> Giới thiệu </a></li>
+                                <li <?php if($type == 4) echo 'class="active"'; ?>><a href="#"> Liên hệ </a></li>
                             </ul>
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->
