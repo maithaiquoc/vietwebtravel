@@ -23,13 +23,46 @@ class Crud_model extends CI_Model {
         return $q->row_array();
     }
 
-    //to select records with condition
+    //to select records with conditions
     function select($field, $table, $condition1, $condition2)
     {
         $this->db->select($field);
         $this->db->from($table);
         $this->db->where($condition1);
         $this->db->where($condition2);
+        $q = $this->db->get();
+
+        $data = array();
+        if($q->num_rows() > 0) {
+            foreach($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+
+    //to select all records
+    function selectAll($table, $sort)
+    {
+        $this->db->from($table);
+        $this->db->order_by($sort);
+        $q = $this->db->get();
+
+        $data = array();
+        if($q->num_rows() > 0) {
+            foreach($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+
+    //to select all records with condition
+    function selectAllWithCondition($table, $condition, $sort)
+    {
+        $this->db->from($table);
+        $this->db->where($condition);
+        $this->db->order_by($sort);
         $q = $this->db->get();
 
         $data = array();
